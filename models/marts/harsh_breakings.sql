@@ -1,21 +1,20 @@
 WITH breakings AS (
     SELECT 
-        deviceID,
-        tripID,
-        timeStamp,
-        LAG(speed) OVER (PARTITION BY deviceID, tripID ORDER BY timeStamp) AS begin_speed,
-        speed AS end_speed,
-        (speed - LAG(speed) OVER (PARTITION BY deviceID, tripID ORDER BY timeStamp)) AS speed_diff
+        device_id,
+        trip_id,
+        measure_ts,
+        LAG(car_speed_km_per_hour) OVER (PARTITION BY device_id, trip_id ORDER BY measure_ts) AS begin_speed,
+        car_speed_km_per_hour AS end_speed,
+        (car_speed_km_per_hour - LAG(car_speed_km_per_hour) OVER (PARTITION BY device_id, trip_id ORDER BY measure_ts)) AS speed_diff
     FROM {{ ref('stg_telematics') }}
 )
-
 SELECT 
-    deviceID,
-    tripID,
-    timeStamp,
+    device_id,
+    trip_id,
+    measure_ts,
     begin_speed,
     end_speed,
     speed_diff
 FROM breakings
-WHERE speed_diff < -8.9  -- Filtrer pour garder les freinages forts (< -8.9 m/s²)
-ORDER BY deviceID, tripID, timeStamp;
+WHERE speed_diff < -8.9
+ORDER BY device_id, trip_id, measure_ts
