@@ -1,7 +1,7 @@
 version: 2
 
-sources:
+marts:
   - name: telematics_src
     schema: dbt_telematics
     tables:
-      - name: telematics_src
+      - name: fuel_consumption
