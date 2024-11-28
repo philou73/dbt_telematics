@@ -6,7 +6,7 @@ WITH acceleration AS (
         LAG(speed) OVER (PARTITION BY deviceID, tripID ORDER BY timeStamp) AS begin_speed,
         speed AS end_speed,
         (speed - LAG(speed) OVER (PARTITION BY deviceID, tripID ORDER BY timeStamp)) AS speed_diff
-    FROM `blent-sandbox-6169080881.dbt_telematics.telematics_src`
+    FROM {{ ref('stg_telematics') }}
 )
 
 SELECT 
