@@ -4,4 +4,4 @@ sources:
   - name: telematics_src
     schema: dbt_telematics
     tables:
-      - name: telematics_src
+      - name: telematics_src_small
