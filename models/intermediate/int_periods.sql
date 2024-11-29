@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized = "table",
+    cluster_by = ["start_ts", "end_ts"],
+  )
+}}
+
 SELECT
     trip_id,
     device_id,
