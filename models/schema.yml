@@ -50,12 +50,12 @@ models:
         description: Timestamp de la mesure
         tests:
           - not_null
-      - name: begin_speed
+      - name: previous_end_speed_period
         description: Vitesse de départ de la période
       - name: end_speed
         description: Vitesse de fin de la période
       - name: speed_diff
-        description: Différence entre la vitesse de fin et la vitesse de départ. Filtre sur speed_diff > 6.9
+        description: Différence entre la vitesse de fin et la vitesse de départ.
   - name: harsh_breakings
     description: Données de freinages forts, un freinage est considéré comme fort si l'écart de l'accélération entre deux secondes successives est inférieure à -0.9g (approximativement -8.9 m/s^2)
     columns:
@@ -76,4 +76,4 @@ models:
       - name: end_speed
         description: Vitesse de fin de la période
       - name: speed_diff
-        description: Différence entre la vitesse de fin et la vitesse de départ. Filtre sur speed_diff < -8.9
+        description: Différence entre la vitesse de fin et la vitesse de départ.
