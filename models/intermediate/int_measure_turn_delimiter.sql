@@ -8,7 +8,7 @@ WITH int_measure AS (
   FROM
     {{ ref("stg_telematics") }}
     WHERE 
-        DATE(measure_id) = '2017-09-26'
+        DATE(measure_ts) = '2017-09-26'
 )
 SELECT 
     trip_id, 

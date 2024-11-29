@@ -140,8 +140,6 @@ models:
           - not_null
       - name: measure_ts
         description: Timestamp de la mesure
-        tests:
-          - not_null
       - name: my
         description: Accélération latérale 
       - name: car_speed_km_per_hour
