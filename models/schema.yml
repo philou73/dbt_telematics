@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: stg_telematics
+    description: Données brutes des courses de taxi
+    columns:
+      - name: measure_id
+        description: Identifiant unique de la mesure
+        tests:
+          - unique
+          - not_null
+      - name: device_id
+        description: Identifiant de l'apparail
+        tests:
+          - not_null
+      - name: mesure_ts
+        description: Timestamp de la mesure
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: mx
+        description: Capteur d'accéléromètre sur l'axe x
+      - name: my
+        description: Capteur d'accéléromètre sur l'axe y
+      - name: mz
+        description: Capteur d'accéléromètre sur l'axe z
+      - name: consumption_km_by_liter
+        description: consommation de carburant en km/litre
+      - name: mass_air_flow
+        description: débit d'air massique
+      - name: revolutions_per_min
+        description: tour par minute du moteur
+      - name: car_speed_km_per_hour
+        description: vitesse en km/h
+        tests:
+          - not_null
+  - name: harsh_accelerations
+    description: Données d'accelerations fortes, une acceleration est considéré comme forte si l'écart de l'accélération entre deux secondes successives est supérieure à 0.7g (approximativement 6.9 m/s^2).
+    columns:
+      - name: device_id
+        description: Identifiant de l'appareil
+        tests:
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: measure_ts
+        description: Timestamp de la mesure
+        tests:
+          - not_null
+      - name: previous_end_speed_period
+        description: Vitesse de départ de la période
+      - name: end_speed
+        description: Vitesse de fin de la période
+      - name: speed_diff
+        description: Différence entre la vitesse de fin et la vitesse de départ.
+  - name: harsh_breakings
+    description: Données de freinages forts, un freinage est considéré comme fort si l'écart de l'accélération entre deux secondes successives est inférieure à -0.9g (approximativement -8.9 m/s^2)
+    columns:
+      - name: device_id
+        description: Identifiant de l'appareil
+        tests:
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: measure_ts
+        description: Timestamp de la mesure
+        tests:
+          - not_null
+      - name: begin_speed
+        description: Vitesse de départ de la période
+      - name: end_speed
+        description: Vitesse de fin de la période
+      - name: speed_diff
+        description: Différence entre la vitesse de fin et la vitesse de départ.
