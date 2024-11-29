@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: mrt_harsh_accelerations
+    description: Données d'accelerations fortes, une acceleration est considéré comme forte si l'écart de l'accélération entre deux secondes successives est supérieure à 0.7g (approximativement 6.9 m/s^2).
+    columns:
+      - name: device_id
+        description: Identifiant de l'appareil
+        tests:
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: measure_ts
+        description: Timestamp de la mesure
+        tests:
+          - not_null
+      - name: previous_end_speed_period
+        description: Vitesse de départ de la période
+      - name: end_speed
+        description: Vitesse de fin de la période
+      - name: speed_diff
+        description: Différence entre la vitesse de fin et la vitesse de départ.
+  - name: mrt_harsh_breakings
+    description: Données de freinages forts, un freinage est considéré comme fort si l'écart de l'accélération entre deux secondes successives est inférieure à -0.9g (approximativement -8.9 m/s^2)
+    columns:
+      - name: device_id
+        description: Identifiant de l'appareil
+        tests:
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: measure_ts
+        description: Timestamp de la mesure
+        tests:
+          - not_null
+      - name: begin_speed
+        description: Vitesse de départ de la période
+      - name: end_speed
+        description: Vitesse de fin de la période
+      - name: speed_diff
+        description: Différence entre la vitesse de fin et la vitesse de départ.
+  - name: mrt_fuel_consumption
+    description : table contenant, pour chaque véhicule et chaque trajet, la consommation moyenne en km/l
+    columns:
+      - name: device_id
+        description : identifiant du véhicule
+        tests:
+          - not_null
+      - name : trip_id
+        description : identificant du trajet
+        tests:
+          - not_null
+      - name : avg_consumption_km_by_liter
+        description : consommation moyenne en km/l sur le trajet. 
+          On écarte les enregistrements incohérents avec moteur arrêté - revolutions_per_min à 0 - au milieu d'un trajet, 
+          car on considère qu'un trajet se termine lorsque le moteur est arrêté.
+        tests:
+          - not_null
+  - name: fact_rapid_turns
+    description: Données listant les courbes rapides. On retient uniquement les périodes dont l'accélération latérale max est supérieure à 1g (soit 9,81 m/s^2). 
+    columns:
+      - name: device_id
+        description: Identifiant de l'appareil
+        tests:
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: my_max
+        description: Accélération latérale maximale sur la courbe
+      - name: speed_max
+        description: Vitesse maximale du véhicule sur la courbe
+      - name: start_turn_ts
+        description: Timestamp du début de la courbe

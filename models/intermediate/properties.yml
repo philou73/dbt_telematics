@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: int_measure_turn_delimiter
+    description: Données indiquant les mesures délimitant les différentes périodes de courbe (passage d'une accélération latérale positive à négative ou nulle et inversement)
+    columns:
+      - name: device_id
+        description: Identifiant de l'appareil
+        tests:
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: my
+        description: Accélération latérale de la mesure 
+      - name: my_prev
+        description: Accélération latérale de la mesure précédente
+      - name: is_turn_delimiter
+        description: Booléen indiquant si la mesure est prise sur un nouveau virage
+  - name: int_periods
+    description: Données définissant les périodes de chaque courbe différente
+    columns:
+      - name: device_id
+        description: Identifiant de l'appareil
+        tests:
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: start_ts
+        description: Timestamp du début de la période d'une courbe 
+      - name: end_ts
+        description: Timestamp de fin de la période d'une courbe (date de début de la courbe suivante)
+  - name: int_measures_in_periods
+    description: Données des mesures complétées avec lestimestamp de début et de fin de la période de courbe
+    columns:
+      - name: device_id
+        description: Identifiant de l'appareil
+        tests:
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: measure_ts
+        description: Timestamp de la mesure
+      - name: my
+        description: Accélération latérale 
+      - name: car_speed_km_per_hour
+        description: Vitesse du véhicule au moment de la mesure
+      - name: start_ts
+        description: Timestamp du début de la période d'une courbe 
+      - name: end_ts
+        description: Timestamp de fin de la période d'une courbe (date de début de la courbe suivante)

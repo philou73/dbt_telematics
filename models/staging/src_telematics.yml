@@ -1,7 +1,0 @@
-version: 2
-
-sources:
-  - name: telematics_src
-    schema: dbt_telematics
-    tables:
-      - name: telematics_src
