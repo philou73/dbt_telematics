@@ -15,7 +15,7 @@ int_periods_ms AS (
         trip_id,
         device_id
     FROM 
-        {{ ref("int_periods") }}
+        {{ ref("int_turns") }}
 )
 
 SELECT 

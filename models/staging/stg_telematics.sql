@@ -1,10 +1,3 @@
-{{
-  config(
-    materialized = "table",
-    cluster_by = ["measure_ts"],
-  )
-}}
-
 SELECT
   dataID AS measure_id,
   deviceID AS device_id,
