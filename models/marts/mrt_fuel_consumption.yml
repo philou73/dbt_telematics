@@ -11,4 +11,6 @@ marts:
         description : identificant du trajet
 
       - name : avg_cons_km_by_liter
-        description : consommation moyenne en km/l sur le trajet. On écarte les enregistrements avec revolutions_per_min (régime moteur) à 0 lors d'un trajet.   
+        description : consommation moyenne en km/l sur le trajet. 
+          On écarte les enregistrements incohérents avec moteur arrêté - revolutions_per_min à 0 - au milieu d'un trajet, 
+          car on considère qu'un trajet se termine lorsque le moteur est arrêté.
