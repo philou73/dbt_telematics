@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: stg_telematics
+    description: Données brutes des courses de taxi
+    columns:
+      - name: measure_id
+        description: Identifiant unique de la mesure
+        tests:
+          - unique
+          - not_null
+      - name: device_id
+        description: Identifiant de l'apparail
+        tests:
+          - not_null
+      - name: mesure_ts
+        description: Timestamp de la mesure
+        tests:
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: mx
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: my
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: mz
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: consumption_km_by_liter
+        description: consommation de carburant en km/litre
+        tests:
+          - not_null
+      - name: mass_air_flow
+        description: débit d'air massique
+        tests:
+          - not_null
+      - name: revolutions_per_min
+        description: tour par minute du moteur
+        tests:
+          - not_null
+      - name: car_speed_km_per_hour
+        description: vitesse en km/h
+        tests:
+          - not_null
+  - name: harsh_accelerations
+    description: Données brutes des courses de taxi
+    columns:
+      - name: device_id
+        description: Identifiant unique de la mesure
+        tests:
+          - unique
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: measure_ts
+        description: Timestamp de la mesure
+        tests:
+          - not_null
+      - name: begin_speed
+        description: Vitesse de départ de la période
+      - name: end_speed
+        description: Vitesse de fin de la période
+      - name: speed_diff
+        description: Différence entre la vitesse de fin et la vitesse de départ
+  - name: harsh_breakings
+    description: Données brutes des courses de taxi
+    columns:
+      - name: device_id
+        description: Identifiant unique de la mesure
+        tests:
+          - unique
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: measure_ts
+        description: Timestamp de la mesure
+        tests:
+          - not_null
+      - name: begin_speed
+        description: Vitesse de départ de la période
+      - name: end_speed
+        description: Vitesse de fin de la période
+      - name: speed_diff
+        description: Différence entre la vitesse de fin et la vitesse de départ
