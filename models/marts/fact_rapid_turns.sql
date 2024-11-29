@@ -5,7 +5,7 @@ SELECT
     max(my) as max_my,
     max(car_speed_km_per_hour) as max_speed
 FROM
-  {{ref("int_measures_in_turns")}} M
+  {{ref("int_measures_in_periods")}} M
 GROUP BY 
     trip_id, 
     device_id, 
