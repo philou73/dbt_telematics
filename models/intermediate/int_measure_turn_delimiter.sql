@@ -7,6 +7,8 @@ WITH int_measure AS (
     LAG(my) OVER (PARTITION BY trip_id, device_id ORDER BY measure_ts) AS prev_my
   FROM
     {{ ref("stg_telematics") }}
+    WHERE 
+        DATE(measure_id) = '2017-09-26'
 )
 SELECT 
     trip_id, 
