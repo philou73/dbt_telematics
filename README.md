@@ -1,15 +1,33 @@
-Welcome to your new dbt project!
+# 📊 Développement de pipelines ETL sur des données télématiques
 
-### Using the starter project
+## 📝 Description
+Un projet dbt conçu pour transformer des données brutes en un entrepôt de données prêt à l'analyse. Ce projet facilite :
+- La modélisation des données.
+- La documentation automatisée.
+- Les tests de qualité des données.
 
-Try running the following commands:
-- dbt run
-- dbt test
+---
 
+## 🚀 Fonctionnalités
+- **Modèles clairs et réutilisables** : Transformation des données avec des modèles staging, intermédiaires et mart.
+- **Documentation** : Génération automatique pour chaque modèle.
+- **Qualité des données** : Tests intégrés pour valider les résultats.
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+---
+
+## 📦 Structure du Projet
+Voici la structure générale du projet dbt :
+
+```plaintext
+dbt_telematics/
+│
+├── models/
+│   ├── staging/        # Modèles de préparation (ex. stg_telematics.sql)
+│   ├── intermediate/   # Modèles intermédiaires (ex. int_measures_in_periods.sql)
+│   ├── mart/           # Modèles finaux pour l'analyse (ex. fact_rapid_turns.sql)
+│
+├── macros/             # Macros réutilisables pour dbt
+├── tests/              # Tests personnalisés
+├── data/               # Données statiques ou exemples
+├── snapshots/          # Snapshots de données
+└── README.md           # Documentation du projet
