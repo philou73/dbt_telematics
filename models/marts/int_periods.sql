@@ -6,4 +6,4 @@ SELECT
 FROM
     {{ref("int_measure_turn_delimiter")}}
 WHERE
-    is_turn_delimiter = true
+    is_turn_delimiter
