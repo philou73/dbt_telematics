@@ -15,5 +15,5 @@ SELECT
     end_speed,
     (end_speed - previous_end_speed_period) AS speed_diff
 FROM breakings
-WHERE ABS(end_speed - previous_end_speed_period) < -8.9
+WHERE (end_speed - previous_end_speed_period) < -8.9
 ORDER BY device_id, trip_id, measure_ts
