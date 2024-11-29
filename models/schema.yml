@@ -35,7 +35,7 @@ models:
         description: vitesse en km/h
         tests:
           - not_null
-  - name: harsh_accelerations
+  - name: mrt_harsh_accelerations
     description: Données d'accelerations fortes, une acceleration est considéré comme forte si l'écart de l'accélération entre deux secondes successives est supérieure à 0.7g (approximativement 6.9 m/s^2).
     columns:
       - name: device_id
@@ -56,7 +56,7 @@ models:
         description: Vitesse de fin de la période
       - name: speed_diff
         description: Différence entre la vitesse de fin et la vitesse de départ.
-  - name: harsh_breakings
+  - name: mrt_harsh_breakings
     description: Données de freinages forts, un freinage est considéré comme fort si l'écart de l'accélération entre deux secondes successives est inférieure à -0.9g (approximativement -8.9 m/s^2)
     columns:
       - name: device_id
@@ -77,3 +77,20 @@ models:
         description: Vitesse de fin de la période
       - name: speed_diff
         description: Différence entre la vitesse de fin et la vitesse de départ.
+  - name: mrt_fuel_consumption
+    description : table contenant, pour chaque véhicule et chaque trajet, la consommation moyenne en km/l
+    columns:
+      - name: device_id
+        description : identifiant du véhicule
+        tests:
+          - not_null
+      - name : trip_id
+        description : identificant du trajet
+        tests:
+          - not_null
+      - name : avg_consumption_km_by_liter
+        description : consommation moyenne en km/l sur le trajet. 
+          On écarte les enregistrements incohérents avec moteur arrêté - revolutions_per_min à 0 - au milieu d'un trajet, 
+          car on considère qu'un trajet se termine lorsque le moteur est arrêté.
+        tests:
+          - not_null

@@ -6,7 +6,7 @@ SELECT
   mx,
   my,
   mz,
-  NULLIF(kpl,0) AS consumption_km_by_liter,
+  IFNULL(kpl,0) AS consumption_km_by_liter,
   maf AS mass_air_flow,
   rpm AS revolutions_per_min,
   CAST(speed AS INT) AS car_speed_km_per_hour
