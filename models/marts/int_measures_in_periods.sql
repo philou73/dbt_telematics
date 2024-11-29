@@ -1,7 +1,6 @@
 SELECT 
     start_ts as start_turn_ts,
     end_ts as end_turn_ts,
-    turn_number,
     T.trip_id,
     T.device_id,
     T.car_speed_km_per_hour as car_speed_km_per_hour,
