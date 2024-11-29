@@ -60,7 +60,28 @@ models:
           car on considère qu'un trajet se termine lorsque le moteur est arrêté.
         tests:
           - not_null
-  - name: fact_rapid_turns
+  - name: mrt_measures
+    description: Données des mesures complétées avec les timestamp de début et de fin de la période de courbe
+    columns:
+      - name: device_id
+        description: Identifiant de l'appareil
+        tests:
+          - not_null
+      - name: trip_id
+        description: Identifiant du voyage
+        tests:
+          - not_null
+      - name: measure_ts
+        description: Timestamp de la mesure
+      - name: my
+        description: Accélération latérale 
+      - name: car_speed_km_per_hour
+        description: Vitesse du véhicule au moment de la mesure
+      - name: start_ts
+        description: Timestamp du début de la période d'une courbe 
+      - name: end_ts
+        description: Timestamp de fin de la période d'une courbe (date de début de la courbe suivante)
+  - name: mrt_rapid_turns
     description: Données listant les courbes rapides. On retient uniquement les périodes dont l'accélération latérale max est supérieure à 1g (soit 9,81 m/s^2). 
     columns:
       - name: device_id

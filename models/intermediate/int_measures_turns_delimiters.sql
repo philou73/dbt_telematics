@@ -1,4 +1,4 @@
-WITH int_measure AS (
+WITH int_measures AS (
     SELECT
     trip_id,
     device_id,
@@ -20,4 +20,4 @@ SELECT
         THEN false
         ELSE true
     END as is_turn_delimiter
-FROM int_measure
+FROM int_measures

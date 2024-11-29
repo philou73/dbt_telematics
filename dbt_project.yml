@@ -37,8 +37,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   telematics_project:
-    # Applies to all files under models/example/
     staging:
+      +schema: staging
       +materialized: view
     marts:
+      +schema: marts
       +materialized: table
+    intermediate:
+      +schema: intermediate
+      +materialized: view
