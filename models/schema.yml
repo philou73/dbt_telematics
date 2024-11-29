@@ -78,7 +78,7 @@ models:
       - name: speed_diff
         description: Différence entre la vitesse de fin et la vitesse de départ.
 
-  - name: int_measure_turn_delimiter
+  - name: int_measures_turns_delimiters
     description: Données indiquant les mesures délimitant les différentes périodes de courbe (passage d'une accélération latérale positive à négative ou nulle et inversement)
     columns:
       - name: device_id
@@ -95,7 +95,7 @@ models:
         description: Accélération latérale de la mesure précédente
       - name: is_turn_delimiter
         description: Booléen indiquant si la mesure est prise sur un nouveau virage
-  - name: int_periods
+  - name: int_turns
     description: Données définissant les périodes de chaque courbe différente
     columns:
       - name: device_id
@@ -110,8 +110,8 @@ models:
         description: Timestamp du début de la période d'une courbe 
       - name: end_ts
         description: Timestamp de fin de la période d'une courbe (date de début de la courbe suivante)
-  - name: int_measures_in_periods
-    description: Données des mesures complétées avec lestimestamp de début et de fin de la période de courbe
+  - name: mrt_measures
+    description: Données des mesures complétées avec les timestamp de début et de fin de la période de courbe
     columns:
       - name: device_id
         description: Identifiant de l'appareil
@@ -131,7 +131,7 @@ models:
         description: Timestamp du début de la période d'une courbe 
       - name: end_ts
         description: Timestamp de fin de la période d'une courbe (date de début de la courbe suivante)
-  - name: fact_rapid_turns
+  - name: mrt_rapid_turns
     description: Données listant les courbes rapides. On retient uniquement les périodes dont l'accélération latérale max est supérieure à 1g (soit 9,81 m/s^2). 
     columns:
       - name: device_id
@@ -149,5 +149,3 @@ models:
       - name: start_turn_ts
         description: Timestamp du début de la courbe 
       
-
-
