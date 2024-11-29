@@ -1,0 +1,14 @@
+version: 2
+
+marts:
+  - name: mrt_fuel_consumption
+    description : table contenant, pour chaque véhicule et chaque trajet, la consommation moyenne en km/l
+    columns:
+      - name: device_id
+        description : identifiant du véhicule
+      
+      - name : trip_id
+        description : identificant du trajet
+
+      - name : avg_cons_km_by_liter
+        description : consommation moyenne en km/l sur le trajet. On écarte les enregistrements avec revolutions_per_min (régime moteur) à 0 lors d'un trajet.   
